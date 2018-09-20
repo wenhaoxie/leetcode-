@@ -1,0 +1,14 @@
+class Solution:
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        wordDict={}
+        for string in strs:
+            tmp = ''.join(sorted(string))
+            if tmp not in wordDict:
+                wordDict[tmp] = [string]
+            else:
+                wordDict[tmp].append(string)
+        return list(wordDict.values())
