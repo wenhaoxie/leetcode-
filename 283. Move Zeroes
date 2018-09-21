@@ -1,0 +1,14 @@
+class Solution:
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        res=[]
+        for num in nums:
+            if num!=0:
+                res.append(num)
+        if len(res)>0: nums[:len(res)] = res
+        if len(nums)>len(res): 
+            for i in range(len(res),len(nums)):
+                nums[i] =0
