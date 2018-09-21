@@ -1,0 +1,16 @@
+class Solution:
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        dic = {'{':"}",'[':']','(':')'}
+        stack =[]
+        for ss in s:
+            if ss in dic:
+                stack.append(dic[ss])
+            elif stack!= [] and stack.pop() == ss:
+                continue
+            else:
+                return False
+        return stack == []
