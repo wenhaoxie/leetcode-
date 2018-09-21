@@ -1,0 +1,27 @@
+class Solution:
+    def maxAreaOfIsland(self, gird):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        res = 0
+        for i in range(len(gird)):
+            for j in range(len(gird[i])):
+                if gird[i][j] == 1:
+                    count = [0]
+                    self.countArea(i,j,count,gird)
+                    res = max(res,count[0])
+        return res
+                    
+    def countArea(self,i,j,count,gird):
+        if i>=len(gird) or i<0 or j>=len(gird[i]) or j<0:
+            return
+        if gird[i][j] == 0:
+            return
+        if gird[i][j] == 1:
+            count[0]+=1
+            gird[i][j] = 0
+        self.countArea(i+1,j,count,gird)
+        self.countArea(i-1,j,count,gird)
+        self.countArea(i,j+1,count,gird)
+        self.countArea(i,j-1,count,gird)
