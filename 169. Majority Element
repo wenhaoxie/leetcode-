@@ -1,0 +1,16 @@
+class Solution:
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        numdict = {}
+        num_half = len(nums)/2
+        for n in nums:
+            if n not in numdict:
+                numdict[n] =1
+            else:
+                numdict[n]+=1
+        for k,v in numdict.items():
+            if v > num_half:
+                return k
