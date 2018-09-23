@@ -1,0 +1,13 @@
+class Solution:
+    def twoSum(self, numbers, target):
+        """
+        :type numbers: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        prevnum = {}
+        for i,num in enumerate(numbers):
+            if num not in prevnum:
+                prevnum[target-num] =i
+            else:
+                return [prevnum[num]+1,i+1]
