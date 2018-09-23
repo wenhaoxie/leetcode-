@@ -1,0 +1,28 @@
+class Solution:
+    def addStrings(self, num1, num2):
+        """
+        :type num1: str
+        :type num2: str
+        :rtype: str
+        """
+        if len(num1) ==0:
+            return num2
+        if len(num2) ==0:
+            return num1
+        num1 = num1[::-1]
+        num2 = num2[::-1]
+        res = [0]*(max(len(num1),len(num2))+1)
+        for i in range(len(res)):
+            if i<len(num1):
+                res[i]+=int(num1[i])
+            if i <len(num2):
+                res[i]+=int(num2[i])
+        for i in range(len(res)-1):
+            if res[i]>=10:
+                res[i+1] += res[i]//10
+                res[i] = res[i]%10
+        res = res[::-1]
+        if res[0] ==0:
+            return ''.join(str(a) for a in res[1:])
+        else:
+            return ''.join(str(a) for a in res)
