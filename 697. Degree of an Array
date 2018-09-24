@@ -1,0 +1,21 @@
+class Solution:
+    def findShortestSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        c = collections.Counter(nums)
+        first = {}
+        last = {}
+        min_len = len(nums)
+        max_cnt = max(c.values())
+        for i,v in enumerate(nums):
+            if v not in first:
+                first[v] = i
+                last[v] = i
+            else:
+                last[v] =i
+        for k,v in first.items():
+            if c[k] == max_cnt:
+                min_len = min(last[k]-first[k]+1,min_len)
+        return min_len
