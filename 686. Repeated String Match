@@ -1,0 +1,22 @@
+class Solution:
+    def repeatedStringMatch(self, A, B):
+        """
+        :type A: str
+        :type B: str
+        :rtype: int
+        """
+        if len(A)==0 or len(B) ==0:
+            return -1
+        x = A*(len(B)//len(A) +2)
+        if B in x:
+            x = x[len(A):]
+            if B in x:
+                x = x[len(A):]
+                if B in x:
+                    return len(B)//len(A)
+                else:
+                    return len(B)//len(A)+1
+            else:
+                return len(B)//len(A)+2
+        else:
+            return -1
