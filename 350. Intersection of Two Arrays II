@@ -1,0 +1,26 @@
+class Solution:
+    def intersect(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        num1_dict = {}
+        num2_dict = {}
+        res =[]
+        for n1 in nums1:
+            if n1 not in num1_dict:
+                num1_dict[n1] =1
+            else:
+                num1_dict[n1]+=1
+        for n2 in nums2:
+            if n2 not in num2_dict:
+                num2_dict[n2] =1
+            else:
+                num2_dict[n2]+=1
+        for k,v in num1_dict.items():
+            if k in num2_dict:
+                val = min(v, num2_dict[k])
+                for _ in range(val):
+                    res.append(k)
+        return res
