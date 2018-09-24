@@ -1,0 +1,27 @@
+class Solution:
+    def compress(self, chars):
+        """
+        :type chars: List[str]
+        :rtype: int
+        """
+        if len(chars) ==0:
+            return 0
+        res = []
+        key = chars[0]
+        num = 0
+        for c in chars:
+            if key == c:
+                num+=1
+            else:
+                res.append(key)
+                if num!=1:
+                    for n in str(num):
+                        res.append(n)
+                key = c
+                num =1
+        res.append(key)
+        if num !=1:
+            for n in str(num):
+                res.append(n)
+        chars[:] = res
+        return len(res)
