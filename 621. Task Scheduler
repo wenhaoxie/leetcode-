@@ -1,0 +1,17 @@
+class Solution:
+    def leastInterval(self, tasks, n):
+        """
+        :type tasks: List[str]
+        :type n: int
+        :rtype: int
+        """
+        num_dict = {}
+        for task in tasks:
+            if task not in num_dict:
+                num_dict[task] =1
+            else:
+                num_dict[task] +=1
+        max_char = max(num_dict, key=num_dict.get)
+        max_num = num_dict[max_char]
+        equal_max_num = sum([1 for k,v in num_dict.items() if v == max_num])
+        return max(len(tasks), (max_num-1)*(n+1)+equal_max_num)
